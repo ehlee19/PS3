@@ -4,29 +4,50 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import pkgEnum.eRank;
+import pkgEnum.eSuit;
+import pkgException.DeckException;
+
 public class DeckTest {
 
 	@Test
-	public void TestEmptyDeck() {
-		//TODO: Build a deck, draw until you get a DeckException
+	(expected = DeckException.class)
+	public void TestEmptyDeck() throws DeckException{
+		
+		Deck d = new Deck();
+		for (int a = 0; a <= 53; a++) {
+			d.Draw();
+		}
+		
 	}
 	
 	@Test
 	public void TestDrawSuit() {
-		//TODO: Build a deck, test the Draw(eSuit) method
+		
+		Deck d = new Deck();
+		Card card = d.Draw(eSuit.CLUBS);
+		assertTrue(card.geteSuit() == eSuit.CLUBS);
+		
 	}
 	
 	@Test
 	public void TestDrawRank() {
-		//TODO: Build a deck, test the Draw(eRank) method
+		
+		Deck d = new Deck();
+		Card card = d.Draw(eRank.SEVEN);
+		assertTrue(card.geteRank() == eRank.SEVEN);
 	}
 	
 	public void TestDeckRankCount() {
-		//TODO: Build a deck, test the DeckRankCount method
+		
+		Deck d = new Deck();
+		assertTrue(d.eRankleft(eRank.JACK) == 4);
 	}
 	
 	public void TestDeckSuitCount() {
-		//TODO: Build a deck, test the DeckSuitCount method
+		
+		Deck d = new Deck();
+		assertTrue(d.eSuitleft(eSuit.SPADES) == 12);
 	}
 
 }
